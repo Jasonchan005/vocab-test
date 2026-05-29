@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="4Bj_hg4MbOYeP9G-9Z_mmzXqWSEJmg6o3snc0fdNPTA" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-503ZSLGF0W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-503ZSLGF0W');
+    function trackEvent(action, params) {
+      if (typeof gtag === 'function') gtag('event', action, params || {});
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free English Vocabulary Size Test – Check Your Word Power | VocabTest</title>
+  <meta name="description" content="Take a free 5-minute English vocabulary size test. Estimate how many words you know. Compare with average native speaker levels. Share your score!">
+  <meta name="keywords" content="vocabulary test, vocabulary size, english vocabulary, how many words do I know, vocab quiz, word power test">
+  <meta property="og:title" content="Free English Vocabulary Size Test">
+  <meta property="og:description" content="Find out how many English words you know in 5 minutes. Free, no sign-up. Share your score!">
+  <meta property="og:url" content="https://vocab-test.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VocabTest">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free English Vocabulary Size Test">
+  <meta name="twitter:description" content="How many English words do you know? Take the free 5-minute test!">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://vocab-test.vercel.app/">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
+    .container { max-width: 700px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border-radius: 16px; margin-bottom: 24px; }
+    .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .header p { font-size: 14px; opacity: 0.9; }
+    .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card h2 { font-size: 18px; margin-bottom: 12px; }
+    .word { font-size: 32px; font-weight: 700; text-align: center; padding: 30px 20px; color: #1a1a2e; }
+    .word small { font-size: 14px; font-weight: 400; color: #666; display: block; margin-top: 8px; }
+    .btn-row { display: flex; gap: 12px; margin-top: 20px; }
+    .btn { flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .btn-know { background: #22c55e; color: white; }
+    .btn-know:hover { background: #16a34a; }
+    .btn-notknow { background: #ef4444; color: white; }
+    .btn-notknow:hover { background: #dc2626; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: #6366f1; color: white; width: 100%; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .btn-primary:hover { background: #4f46e5; }
+    .btn-share { background: #1da1f2; color: white; }
+    .btn-share:hover { background: #1a8cd8; }
+    .progress-bar { height: 6px; background: #e5e7eb; border-radius: 3px; margin-bottom: 16px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6); border-radius: 3px; transition: width 0.3s; }
+    .stats { display: flex; justify-content: space-between; font-size: 13px; color: #666; margin-bottom: 4px; }
+    .result-score { font-size: 64px; font-weight: 800; text-align: center; color: #6366f1; line-height: 1; }
+    .result-score small { font-size: 20px; font-weight: 400; color: #666; }
+    .result-label { text-align: center; font-size: 14px; color: #666; margin-top: 8px; }
+    .result-level { display: inline-block; padding: 4px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin-top: 12px; }
+    .result-compare { background: #f3f4f6; border-radius: 10px; padding: 16px; margin-top: 16px; }
+    .result-compare div { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; border-bottom: 1px solid #e5e7eb; }
+    .result-compare div:last-child { border-bottom: none; }
+    .hidden { display: none; }
+    .tagline { text-align: center; font-size: 12px; color: #999; padding: 16px; }
+    .tagline a { color: #6366f1; text-decoration: none; }
+    .progress-steps { display: flex; justify-content: space-between; margin-bottom: 16px; }
+    .step { width: 24px; height: 24px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #999; transition: all 0.3s; }
+    .step.active { background: #6366f1; color: white; }
+    .step.done { background: #22c55e; color: white; }
+    @media (max-width: 480px) { .header { padding: 24px 16px; } .header h1 { font-size: 22px; } .result-score { font-size: 48px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📖 Vocabulary Size Test</h1>
+      <p>Find out how many English words you know in 5 minutes</p>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="startScreen" class="card">
+      <h2>How it works</h2>
+      <p style="font-size:14px;color:#666;line-height:1.6;">
+        You'll see <strong>60 English words</strong>, one at a time.<br>
+        Click <strong>✓ I Know This</strong> if you know the word meaning.<br>
+        Click <strong>✗ Don't Know</strong> if you're unsure.<br>
+        Be honest! The test uses a statistical model to estimate your total vocabulary.
+      </p>
+      <div style="margin-top:20px;">
+        <button class="btn-primary" id="startBtn">Start Test →</button>
+      </div>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" class="card hidden">
+      <div class="stats">
+        <span id="progressText">Word 1 of 60</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="word" id="wordDisplay">Loading...</div>
+      <div class="btn-row">
+        <button class="btn btn-know" id="knowBtn">✓ I Know This</button>
+        <button class="btn btn-notknow" id="notknowBtn">✗ Don't Know</button>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <button class="btn-primary" id="finishBtn" style="width:auto;padding:10px 24px;font-size:14px;background:#6b7280;">Finish Early</button>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="resultScreen" class="card hidden">
+      <div class="result-score" id="scoreDisplay">0 <small>words</small></div>
+      <div class="result-label">Estimated English Vocabulary Size</div>
+      <div style="text-align:center;"><span class="result-level" id="levelDisplay">Beginner</span></div>
+
+      <div class="result-compare">
+        <div><span>📚 Native speaker (adult)</span><span><strong>20,000 – 35,000</strong></span></div>
+        <div><span>🎓 University graduate</span><span><strong>15,000 – 25,000</strong></span></div>
+        <div><span>📖 Avid reader</span><span><strong>25,000 – 50,000</strong></span></div>
+        <div><span>🌍 Fluent ESL speaker</span><span><strong>8,000 – 12,000</strong></span></div>
+        <div><span>✅ IELTS 7.0+</span><span><strong>~8,000</strong></span></div>
+        <div><span>✅ CET-6 (China)</span><span><strong>~6,000</strong></span></div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;gap:12px;flex-direction:column;">
+        <button class="btn btn-share" id="shareBtn" style="width:100%;">📤 Share My Score</button>
+        <button class="btn btn-primary" id="retakeBtn" style="width:100%;">🔄 Take Again</button>
+      </div>
+    </div>
+
+    <div class="tagline">
+      <a href="https://vocab-test.vercel.app/">VocabTest</a> — Free vocabulary size test by JCS Labs
+    </div>
+  </div>
+
+  <script>
+    // ─── Word Bank ───────────────────────────────────────────
+    // 60 words sorted by difficulty (CEFR A1 → C2)
+    const WORDS = [
+      // A1 - Beginner (10 words)
+      { word: 'apple', difficulty: 1 }, { word: 'book', difficulty: 1 }, { word: 'cat', difficulty: 1 },
+      { word: 'dog', difficulty: 1 }, { word: 'eat', difficulty: 1 }, { word: 'fish', difficulty: 1 },
+      { word: 'good', difficulty: 1 }, { word: 'house', difficulty: 1 }, { word: 'sun', difficulty: 1 },
+      { word: 'water', difficulty: 1 },
+      // A2 - Elementary (10 words)
+      { word: 'arrive', difficulty: 2 }, { word: 'bridge', difficulty: 2 }, { word: 'climb', difficulty: 2 },
+      { word: 'discover', difficulty: 2 }, { word: 'envelope', difficulty: 2 }, { word: 'furniture', difficulty: 2 },
+      { word: 'guilty', difficulty: 2 }, { word: 'harbor', difficulty: 2 }, { word: 'invite', difficulty: 2 },
+      { word: 'journey', difficulty: 2 },
+      // B1 - Intermediate (10 words)
+      { word: 'abandon', difficulty: 3 }, { word: 'benefit', difficulty: 3 }, { word: 'campaign', difficulty: 3 },
+      { word: 'deadline', difficulty: 3 }, { word: 'establish', difficulty: 3 }, { word: 'frequent', difficulty: 3 },
+      { word: 'generate', difficulty: 3 }, { word: 'hypothesis', difficulty: 3 }, { word: 'implement', difficulty: 3 },
+      { word: 'justify', difficulty: 3 },
+      // B2 - Upper Intermediate (10 words)
+      { word: 'allegation', difficulty: 4 }, { word: 'ambiguous', difficulty: 4 }, { word: 'comprehensive', difficulty: 4 },
+      { word: 'deteriorate', difficulty: 4 }, { word: 'elaborate', difficulty: 4 }, { word: 'fluctuate', difficulty: 4 },
+      { word: 'inevitable', difficulty: 4 }, { word: 'legitimate', difficulty: 4 }, { word: 'perpetual', difficulty: 4 },
+      { word: 'scrutiny', difficulty: 4 },
+      // C1 - Advanced (10 words)
+      { word: 'anomaly', difficulty: 5 }, { word: 'conundrum', difficulty: 5 }, { word: 'dichotomy', difficulty: 5 },
+      { word: 'exacerbate', difficulty: 5 }, { word: 'idiosyncrasy', difficulty: 5 }, { word: 'juxtapose', difficulty: 5 },
+      { word: 'meticulous', difficulty: 5 }, { word: 'perfunctory', difficulty: 5 }, { word: 'substantiate', difficulty: 5 },
+      { word: 'ubiquitous', difficulty: 5 },
+      // C2 - Proficient (10 words)
+      { word: 'acquiesce', difficulty: 6 }, { word: 'belligerent', difficulty: 6 }, { word: 'cacophony', difficulty: 6 },
+      { word: 'diatribe', difficulty: 6 }, { word: 'ephemeral', difficulty: 6 }, { word: 'grandiloquent', difficulty: 6 },
+      { word: 'obfuscate', difficulty: 6 }, { word: 'perspicacious', difficulty: 6 }, { word: 'sycophant', difficulty: 6 },
+      { word: 'vicissitude', difficulty: 6 }
+    ];
+
+    // Difficulty → estimated vocab size mapping (cumulative)
+    // Base: CEFR levels mapped to vocabulary size ranges
+    const DIFFICULTY_VOCAB = {
+      1: { min: 0, max: 1500, label: 'A1 Beginner', color: '#6b7280' },
+      2: { min: 1500, max: 3000, label: 'A2 Elementary', color: '#22c55e' },
+      3: { min: 3000, max: 5000, label: 'B1 Intermediate', color: '#06b6d4' },
+      4: { min: 5000, max: 8000, label: 'B2 Upper Intermediate', color: '#6366f1' },
+      5: { min: 8000, max: 15000, label: 'C1 Advanced', color: '#f59e0b' },
+      6: { min: 15000, max: 35000, label: 'C2 Proficient', color: '#ef4444' }
+    };
+
+    // ─── State ──────────────────────────────────────────────
+    let currentIndex = 0;
+    let knownCount = 0;
+    let maxDifficulty = 0;
+    let answers = []; // { word, difficulty, known }
+    let shuffledWords = [];
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // ─── Start ──────────────────────────────────────────────
+    document.getElementById('startBtn').addEventListener('click', startTest);
+    document.getElementById('knowBtn').addEventListener('click', () => answerWord(true));
+    document.getElementById('notknowBtn').addEventListener('click', () => answerWord(false));
+    document.getElementById('finishBtn').addEventListener('click', finishTest);
+    document.getElementById('retakeBtn').addEventListener('click', startTest);
+    document.getElementById('shareBtn').addEventListener('click', shareResult);
+
+    function startTest() {
+      currentIndex = 0; knownCount = 0; maxDifficulty = 0; answers = [];
+      shuffledWords = shuffle([...WORDS]);
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('testScreen').classList.remove('hidden');
+      trackEvent('test_start', { tool: 'vocab_test' });
+      showWord();
+    }
+
+    function showWord() {
+      if (currentIndex >= shuffledWords.length) { finishTest(); return; }
+      const w = shuffledWords[currentIndex];
+      document.getElementById('wordDisplay').innerHTML = w.word + '<small>Do you know the meaning of this word?</small>';
+      document.getElementById('progressText').textContent = 'Word ' + (currentIndex + 1) + ' of ' + shuffledWords.length;
+      const pct = Math.round((currentIndex / shuffledWords.length) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressPct').textContent = pct + '%';
+    }
+
+    function answerWord(known) {
+      const w = shuffledWords[currentIndex];
+      answers.push({ word: w.word, difficulty: w.difficulty, known });
+      if (known) { knownCount++; if (w.difficulty > maxDifficulty) maxDifficulty = w.difficulty; }
+      currentIndex++;
+      trackEvent('word_answer', { tool: 'vocab_test', word_num: currentIndex, known: known });
+      showWord();
+    }
+
+    function finishTest() {
+      document.getElementById('testScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+
+      // Calculate estimated vocab size
+      // Algorithm: Base on highest difficulty where user knows > 50%
+      // + known ratio adjustment
+      const totalAnswered = answers.length;
+      if (totalAnswered === 0) { showScore(0, 1); return; }
+
+      // Group by difficulty
+      const byDiff = {};
+      for (const a of answers) {
+        if (!byDiff[a.difficulty]) byDiff[a.difficulty] = { total: 0, known: 0 };
+        byDiff[a.difficulty].total++;
+        if (a.known) byDiff[a.difficulty].known++;
+      }
+
+      // Find the highest difficulty where user knows >= 50%
+      let peakDiff = 1;
+      for (let d = 1; d <= 6; d++) {
+        if (byDiff[d] && byDiff[d].total > 0 && byDiff[d].known / byDiff[d].total >= 0.5) {
+          peakDiff = d;
+        }
+      }
+
+      // Estimate: interpolate within the peak difficulty range
+      const level = DIFFICULTY_VOCAB[peakDiff];
+      const knownRatio = knownCount / totalAnswered;
+      const range = level.max - level.min;
+      let estimated = level.min + Math.round(range * knownRatio);
+      estimated = Math.max(100, Math.min(35000, estimated));
+
+      // Apply penalty for early finish (less data = wider confidence interval)
+      if (totalAnswered < 30) {
+        estimated = Math.round(estimated * (0.7 + totalAnswered / 100));
+      }
+
+      showScore(estimated, peakDiff);
+      trackEvent('test_complete', { tool: 'vocab_test', score: estimated, words_answered: totalAnswered });
+    }
+
+    function showScore(score, peakDiff) {
+      document.getElementById('scoreDisplay').innerHTML = score.toLocaleString() + ' <small>words</small>';
+      const level = DIFFICULTY_VOCAB[peakDiff];
+      const el = document.getElementById('levelDisplay');
+      el.textContent = level.label;
+      el.style.background = level.color + '22';
+      el.style.color = level.color;
+      el.style.border = '2px solid ' + level.color;
+    }
+
+    function shareResult() {
+      const score = document.getElementById('scoreDisplay').textContent.replace('words', '').trim();
+      const level = document.getElementById('levelDisplay').textContent;
+      const text = `📖 I just tested my English vocabulary! I know ${score} words (${level}).\n\nHow many do you know? Take the free test 👇\nhttps://vocab-test.vercel.app/`;
+      
+      if (navigator.share) {
+        navigator.share({ title: 'My Vocabulary Size', text }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('📋 Result copied! Share it with your friends.');
+        }).catch(() => {
+          // Fallback: open Twitter
+          window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+        });
+      }
+      trackEvent('share_result', { tool: 'vocab_test', score: score });
+    }
+  </script>
+</body>
+</html>
