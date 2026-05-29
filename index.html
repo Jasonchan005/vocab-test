@@ -20,14 +20,14 @@
   <meta name="keywords" content="vocabulary test, vocabulary size, english vocabulary, how many words do I know, vocab quiz, word power test">
   <meta property="og:title" content="Free English Vocabulary Size Test">
   <meta property="og:description" content="Find out how many English words you know in 5 minutes. Free, no sign-up. Share your score!">
-  <meta property="og:url" content="https://vocab-test.vercel.app/">
+  <meta property="og:url" content="https://vocab-test-one.vercel.app/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VocabTest">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free English Vocabulary Size Test">
   <meta name="twitter:description" content="How many English words do you know? Take the free 5-minute test!">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://vocab-test.vercel.app/">
+  <link rel="canonical" href="https://vocab-test-one.vercel.app/">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
@@ -130,7 +130,7 @@
     </div>
 
     <div class="tagline">
-      <a href="https://vocab-test.vercel.app/">VocabTest</a> — Free vocabulary size test by JCS Labs
+      <a href="https://vocab-test-one.vercel.app/">VocabTest</a> — Free vocabulary size test by JCS Labs
     </div>
   </div>
 
@@ -288,7 +288,7 @@
     function shareResult() {
       const score = document.getElementById('scoreDisplay').textContent.replace('words', '').trim();
       const level = document.getElementById('levelDisplay').textContent;
-      const text = `📖 I just tested my English vocabulary! I know ${score} words (${level}).\n\nHow many do you know? Take the free test 👇\nhttps://vocab-test.vercel.app/`;
+      const text = `📖 I just tested my English vocabulary! I know ${score} words (${level}).\n\nHow many do you know? Take the free test 👇\nhttps://vocab-test-one.vercel.app/`;
       
       if (navigator.share) {
         navigator.share({ title: 'My Vocabulary Size', text }).catch(() => {});
